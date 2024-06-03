@@ -9,6 +9,8 @@ type CardProps = {
   date: string;
   title: string;
   description: string;
+  height?: string;
+  titleSize?: string;
 };
 export default function Card({
   image,
@@ -16,10 +18,12 @@ export default function Card({
   date,
   title,
   description,
+  height = "20rem",
+  titleSize = "text-4xl",
 }: CardProps) {
   return (
     <Link href={`/games/${gameId}`} className="w-full">
-      <div className="ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative h-[28rem] overflow-hidden group/card">
+      <div className="ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative overflow-hidden group/card ring-2" style={{ height }}>
         <Image
           src={image}
           alt={`Game image ${title}`}
@@ -31,7 +35,7 @@ export default function Card({
             <ClockIcon className="h-6 w-6 text-white" />
             {date}
           </p>
-          <h2 className="font-bold text-4xl">{title}</h2>
+          <h2 className={`${titleSize} font-bold`}>{title}</h2>
           <p className="text-base text-slate-400 group-hover/card:text-white transition-colors">
             {description}
           </p>
