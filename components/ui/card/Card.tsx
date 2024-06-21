@@ -2,15 +2,16 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 type CardProps = {
   image: string | StaticImport;
-  gameId: number;
+  gameId?: number;
   date: string;
   title: string;
   description: string;
-  height?: string;
-  titleSize?: string;
+  className?: string;
+  titleClassname?: string;
 };
 export default function Card({
   image,
@@ -18,12 +19,14 @@ export default function Card({
   date,
   title,
   description,
-  height = "20rem",
-  titleSize = "text-4xl",
+  className,
+  titleClassname,
 }: CardProps) {
   return (
     <Link href={`/games/${gameId}`} className="w-full">
-      <div className="ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative overflow-hidden group/card ring-2" style={{ height }}>
+      <div
+        className={twMerge("ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative overflow-hidden group/card ring-2 h-80", className)}
+      >
         <Image
           src={image}
           alt={`Game image ${title}`}
@@ -35,7 +38,9 @@ export default function Card({
             <ClockIcon className="h-6 w-6 text-white" />
             {date}
           </p>
-          <h2 className={`${titleSize} font-bold`}>{title}</h2>
+          <h2 className={twMerge("font-bold text-4xl", titleClassname)}>
+            {title}
+          </h2>
           <p className="text-base text-slate-400 group-hover/card:text-white transition-colors">
             {description}
           </p>
