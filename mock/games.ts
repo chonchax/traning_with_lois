@@ -1,4 +1,4 @@
-export const posts = [
+export const games = [
     {
         id: 1,
         title: "God Of War Ragnarök",

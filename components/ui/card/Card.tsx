@@ -25,9 +25,10 @@ export default function Card({
   return (
     <Link href={`/games/${gameId}`} className="w-full">
       <div
-        className={twMerge("ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative overflow-hidden group/card ring-2 h-80", className)}
+        className={twMerge("ring-[#344255] hover:ring-4 rounded-2xl shadow-md w-full relative overflow-hidden group/card ring-2 h-80 ", className)}
       >
         <Image
+          className="transform transition duration-300 ease-in-out hover:scale-110"
           src={image}
           alt={`Game image ${title}`}
           fill={true}
